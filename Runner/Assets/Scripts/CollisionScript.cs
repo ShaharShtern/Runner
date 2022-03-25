@@ -10,8 +10,6 @@ public class CollisionScript : MonoBehaviour
     {
         
     }
-
-    // Update is called once per frame
     void Update()
     {
         
@@ -20,13 +18,17 @@ public class CollisionScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            //disable movement script
             GetComponent<MovementScript>().enabled = false;
+            //stop player in place
             GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            //reset scene
             Invoke("ResetGame", 2f);
         }
     }
     void ResetGame()
     {
+        //reloard current scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

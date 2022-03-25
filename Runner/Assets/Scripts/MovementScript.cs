@@ -21,14 +21,14 @@ public class MovementScript : MonoBehaviour
     {
         //gives forward movement
         rb.AddForce(0, 0, speedForce * Time.deltaTime);
-
+        //side movement
         if (Input.GetKey("a"))
         {
-            rb.AddForce(-sideForce*Time.deltaTime, 0, 0);
+            rb.velocity = new Vector3(-sideForce * Time.deltaTime, rb.velocity.y, rb.velocity.z);
         }
         if (Input.GetKey("d"))
         {
-            rb.AddForce(sideForce*Time.deltaTime, 0, 0);
+            rb.velocity = new Vector3 (sideForce*Time.deltaTime, rb.velocity.y, rb.velocity.z);
         }
     }
 }
