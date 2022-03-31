@@ -5,7 +5,8 @@ using UnityEngine;
 public class MovementScript : MonoBehaviour
 {
     Rigidbody rb;
-    public float speedForce;
+    public float speed;
+    public float maxSpeed;
     public float sideForce;
     void Start()
     {
@@ -20,15 +21,21 @@ public class MovementScript : MonoBehaviour
     private void FixedUpdate()
     {
         //gives forward movement
-        rb.AddForce(0, 0, speedForce * Time.deltaTime);
+        // rb.AddForce(0, 0, speedForce * Time.deltaTime);
+        transform.Translate(0, 0, speed);
+        if (speed<maxSpeed)
+        {
+            speed += 0.001f;
+        }
+        
         //side movement
         if (Input.GetKey("a"))
         {
-            rb.velocity = new Vector3(-sideForce * Time.deltaTime, rb.velocity.y, rb.velocity.z);
+            transform.Translate(-sideForce, 0, 0);
         }
         if (Input.GetKey("d"))
         {
-            rb.velocity = new Vector3 (sideForce*Time.deltaTime, rb.velocity.y, rb.velocity.z);
+            transform.Translate(sideForce, 0, 0);
         }
     }
 }

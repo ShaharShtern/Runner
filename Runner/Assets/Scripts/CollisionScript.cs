@@ -22,6 +22,10 @@ public class CollisionScript : MonoBehaviour
             GetComponent<MovementScript>().enabled = false;
             //stop player in place
             GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            //check what enemy collided with for playtesting
+            print(collision.gameObject);
+            //death sound
+            GetComponent<AudioSource>().Play();
             //reset scene
             Invoke("ResetGame", 2f);
         }
