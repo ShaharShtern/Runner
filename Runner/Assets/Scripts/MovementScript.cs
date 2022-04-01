@@ -7,22 +7,31 @@ public class MovementScript : MonoBehaviour
     Rigidbody rb;
     public float speed;
     public float maxSpeed;
-    public float sideForce;
+    public float sideSpeed;
+    public float jumpForce;
     void Start()
     {
-        //connect rigidbody to rb
         rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
         
+        //jump
+        if (Input.GetKeyDown("w"))
+        {
+            //can only jump when at minimum Y
+            if (transform.position.y == 0.625f)
+            {
+                rb.AddForce(0, jumpForce, 0);
+            }
+        }
     }
     private void FixedUpdate()
     {
         //gives forward movement
-        // rb.AddForce(0, 0, speedForce * Time.deltaTime);
         transform.Translate(0, 0, speed);
+        //increasing speed
         if (speed<maxSpeed)
         {
             speed += 0.001f;
@@ -31,11 +40,13 @@ public class MovementScript : MonoBehaviour
         //side movement
         if (Input.GetKey("a"))
         {
-            transform.Translate(-sideForce, 0, 0);
+            transform.Translate(-sideSpeed, 0, 0);
         }
         if (Input.GetKey("d"))
         {
-            transform.Translate(sideForce, 0, 0);
+            transform.Translate(sideSpeed, 0, 0);
         }
+        
+        
     }
 }
