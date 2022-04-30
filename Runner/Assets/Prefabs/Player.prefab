@@ -130,7 +130,8 @@ MonoBehaviour:
   speed: 0.4
   maxSpeed: 0.75
   sideSpeed: 0.05
-  jumpForce: 170
+  jumpForce: 3.6
+  score: 0
 --- !u!114 &419251046
 MonoBehaviour:
   m_ObjectHideFlags: 0

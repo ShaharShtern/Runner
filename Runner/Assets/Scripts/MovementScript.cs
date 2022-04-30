@@ -9,6 +9,7 @@ public class MovementScript : MonoBehaviour
     public float maxSpeed;
     public float sideSpeed;
     public float jumpForce;
+    public int score;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -18,14 +19,16 @@ public class MovementScript : MonoBehaviour
     {
         
         //jump
-        if (Input.GetKeyDown("w"))
+        if (Input.GetKey("w"))
         {
             //can only jump when at minimum Y
-            if (transform.position.y == 0.625f)
+            if (transform.position.y < 0.626f)
             {
-                rb.AddForce(0, jumpForce, 0);
+                rb.velocity = new Vector3(0, jumpForce, 0);
             }
         }
+        //score
+        score = (int)Mathf.Round(transform.position.z * 100);
     }
     private void FixedUpdate()
     {

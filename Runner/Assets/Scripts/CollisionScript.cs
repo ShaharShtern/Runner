@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class CollisionScript : MonoBehaviour
 {
-    public string nextLevelName;
-    public GameObject winCanvas;
+
     void Start()
     {
         
@@ -36,28 +34,13 @@ public class CollisionScript : MonoBehaviour
             //reset scene
             Invoke("ResetGame", 2f);
         }
-        //win
-        if (collision.gameObject.CompareTag("Finish"))
-        {
-            //disable movement script
-            GetComponent<MovementScript>().enabled = false;
-            //stop player in place
-            GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-            //play win sound
-            collision.gameObject.GetComponent<AudioSource>().Play();
-            //win screen
-            winCanvas.SetActive(true);
-            //next level
-            Invoke("NextLevel", 2f);
-        }
     }
     void ResetGame()
     {
         //reloard current scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + FindObjectOfType<MovementScript>().score/10);
+
     }
-    void NextLevel()
-    {
-        SceneManager.LoadScene(nextLevelName);
-    }
+    
 }

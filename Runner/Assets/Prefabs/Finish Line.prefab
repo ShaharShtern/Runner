@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 3984950834981000809}
   - component: {fileID: 6441011869940110388}
   - component: {fileID: 366429347203942735}
-  - component: {fileID: -6001643209040370083}
+  - component: {fileID: 7547665641804893790}
+  - component: {fileID: -2817298084890727319}
   m_Layer: 0
   m_Name: Finish Line
   m_TagString: Finish
@@ -113,7 +114,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
---- !u!82 &-6001643209040370083
+--- !u!114 &7547665641804893790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6042594676043662517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6dab5e42d229ff4d8008cf1f59be582, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winCanvas: {fileID: 0}
+--- !u!82 &-2817298084890727319
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,7 +138,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 90bcba0276410f04398cb95900a34adf, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
