@@ -39,8 +39,6 @@ public class CollisionScript : MonoBehaviour
     {
         //reloard current scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + FindObjectOfType<MovementScript>().score/10);
-
     }
     
 }

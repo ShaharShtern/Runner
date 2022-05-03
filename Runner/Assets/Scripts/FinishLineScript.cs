@@ -9,17 +9,19 @@ public class FinishLineScript : MonoBehaviour
     public GameObject winCanvas;
     private void OnCollisionEnter(Collision collision)
     {
-        
-            //disable movement script
-            collision.gameObject.GetComponent<MovementScript>().enabled = false;
-            //stop player in place
-            collision.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-            //play win sound
-            GetComponent<AudioSource>().Play();
-            //win screen
-            winCanvas.SetActive(true);
-            //next level
-            Invoke("NextLevel", 2f);
+
+        //disable movement script
+        collision.gameObject.GetComponent<MovementScript>().enabled = false;
+        //stop player in place
+        collision.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+        //play win sound
+        GetComponent<AudioSource>().Play();
+        //win screen
+        winCanvas.SetActive(true);
+        //save coin amount 
+        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + FindObjectOfType<MovementScript>().score / 10);
+        //next level
+        Invoke("NextLevel", 2f);
         
     }
     void NextLevel()
